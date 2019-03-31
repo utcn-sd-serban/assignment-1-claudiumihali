@@ -19,15 +19,15 @@ public class QuestionManagementServiceUnitTests {
     private static RepositoryFactory createMockedRepositoryFactory() {
         RepositoryFactory factory = new MemoryRepositoryFactory();
 
-        factory.createSOUserRepository().save(new SOUser(1, "u1", "u1"));
-        factory.createSOUserRepository().save(new SOUser(2, "u2", "u2"));
-        factory.createSOUserRepository().save(new SOUser(3, "u3", "u3"));
+        factory.createSOUserRepository().save(new SOUser(null, "u1", "u1"));
+        factory.createSOUserRepository().save(new SOUser(null, "u2", "u2"));
+        factory.createSOUserRepository().save(new SOUser(null, "u3", "u3"));
 
-        factory.createQuestionRepository().save(new Question(1, 1, "q1", "q1", LocalDateTime.now()));
-        factory.createQuestionRepository().save(new Question(2, 2, "q2", "q2", LocalDateTime.now()));
-        factory.createQuestionRepository().save(new Question(3, 2, "q3", "q3", LocalDateTime.now()));
+        factory.createQuestionRepository().save(new Question(null, 1, "q1", "q1", LocalDateTime.now()));
+        factory.createQuestionRepository().save(new Question(null, 2, "q2", "q2", LocalDateTime.now()));
+        factory.createQuestionRepository().save(new Question(null, 2, "q3", "q3", LocalDateTime.now()));
 
-        factory.createQuestionVoteRepository().save(new QuestionVote(1, 2, 1, VoteType.DOWNVOTE.getDatabaseText()));
+        factory.createQuestionVoteRepository().save(new QuestionVote(null, 2, 1, VoteType.DOWNVOTE.getDatabaseText()));
 
         return factory;
     }

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS question (
     stack_overflow_user_id integer NOT NULL,
     title character varying(500) NOT NULL,
     text character varying(5000) NOT NULL,
-    creation_date_time timestamp without time zone NOT NULL,
+    creation_date_time timestamp NOT NULL,
     CONSTRAINT pk_question PRIMARY KEY (question_id),
     CONSTRAINT fk_question_stack_overflow_user FOREIGN KEY (stack_overflow_user_id)
         REFERENCES stack_overflow_user (stack_overflow_user_id)
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS answer (
     question_id integer NOT NULL,
     stack_overflow_user_id integer NOT NULL,
     text character varying(5000) NOT NULL,
-    creation_date_time timestamp without time zone NOT NULL,
+    creation_date_time timestamp NOT NULL,
     CONSTRAINT pk_answer PRIMARY KEY (answer_id),
     CONSTRAINT fk_answer_question FOREIGN KEY (question_id)
         REFERENCES question (question_id)
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS question_vote (
     CONSTRAINT fk_question_vote_stack_overflow_user FOREIGN KEY (stack_overflow_user_id)
         REFERENCES stack_overflow_user (stack_overflow_user_id)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT ck_vote_type CHECK (vote_type IN ('upvote', 'downvote'))
+    CONSTRAINT ck_question_vote_type CHECK (vote_type IN ('upvote', 'downvote'))
 );
 
 CREATE TABLE IF NOT EXISTS answer_vote (
@@ -83,5 +83,5 @@ CREATE TABLE IF NOT EXISTS answer_vote (
     CONSTRAINT fk_answer_vote_stack_overflow_user FOREIGN KEY (stack_overflow_user_id)
         REFERENCES stack_overflow_user (stack_overflow_user_id)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT ck_vote_type CHECK (vote_type IN ('upvote', 'downvote'))
+    CONSTRAINT ck_answer_vote_type CHECK (vote_type IN ('upvote', 'downvote'))
 );

@@ -15,7 +15,7 @@ public class SOUserManagementServiceUnitTests {
     private static RepositoryFactory createMockedRepositoryFactory() {
         RepositoryFactory factory = new MemoryRepositoryFactory();
 
-        factory.createSOUserRepository().save(new SOUser(1, "u1", "u1"));
+        factory.createSOUserRepository().save(new SOUser(null, "u1", "u1"));
 
         return factory;
     }

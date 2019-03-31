@@ -21,11 +21,7 @@ class MemoryRepository<T extends DatabaseEntity> implements Repository<T> {
             data.put(databaseEntity.getId(), databaseEntity);
         } else {
             T entity = data.get(databaseEntity.getId());
-            if (entity != null) {
-                entity.updateEntityFields(databaseEntity);
-            } else {
-                data.put(databaseEntity.getId(), databaseEntity);
-            }
+            entity.updateEntityFields(databaseEntity);
         }
         return databaseEntity;
     }
