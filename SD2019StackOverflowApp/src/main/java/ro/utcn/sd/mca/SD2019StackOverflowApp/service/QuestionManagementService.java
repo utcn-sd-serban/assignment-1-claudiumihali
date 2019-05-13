@@ -165,12 +165,16 @@ public class QuestionManagementService {
             tl.addAll(t);
         }
 
-        Set<Question> ql = new LinkedHashSet<>();
+        List<Question> ql = new ArrayList<>();
         Specification<Question> sq;
         for (Tag tag : tl) {
             sq = specificationFactory.createFindQuestionByTagId(tag.getId());
             List<Question> q = repositoryFactory.createQuestionRepository().query(sq);
-            ql.addAll(q);
+            if (ql.isEmpty()) {
+                ql.addAll(q);
+            } else {
+                ql.retainAll(q);
+            }
         }
 
         Specification<QuestionVote> sqv;

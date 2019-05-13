@@ -18,7 +18,7 @@ class ConsoleCommandHandler {
     private final QuestionManagementService questionManagementService;
     private final AnswerManagementService answerManagementService;
     private Integer loggedInUserId = null;
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
     ConsoleCommandHandler(
             SOUserManagementService SOUserManagementService,
